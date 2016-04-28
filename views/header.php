@@ -30,4 +30,13 @@ session_start();?>
         <div class="clear"></div>
     </div>
 </header>
-<?php// echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']; ?>
+<section class="main">
+<?php
+if ($_SESSION['msg'] != NULL)
+{
+    echo "<div class='msg'><p>";
+    echo $_SESSION['msg'];
+    echo "</p></div>";
+    unset($_SESSION['msg']);
+}
+?>

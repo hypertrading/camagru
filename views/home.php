@@ -1,7 +1,7 @@
 <?php
-include("header.php");
+include "header.php";
 ?>
-<section class="main">
+
     <div class="objects">
         <article>
             <img src="../assets/img/objects/corde.png">
@@ -31,7 +31,8 @@ include("header.php");
     <canvas id="canvas" hidden></canvas>
     <div class="clear"></div>
 
-</section>
-
 <script src="../assets/webcam.js" type="text/javascript"></script>
 <script src="../assets/script.js" type="text/javascript"></script>
+<?php
+include 'footer.php';
+?>

@@ -5,6 +5,7 @@ include "controllers/main_functions.php";
 $create_table_users = "CREATE TABLE `users` (
               id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
               login VARCHAR(30) NOT NULL,
+              email VARCHAR(45) NOT NULL,
               passwd varchar(255) NOT NULL,
               droits INT(2) NOT NULL DEFAULT 0,
               date_register TIMESTAMP)";
