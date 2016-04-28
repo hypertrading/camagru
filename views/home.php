@@ -5,15 +5,19 @@ include("header.php");
     <div class="objects">
         <article>
             <img src="../assets/img/objects/corde.png">
-            <input type="radio" name="option" value="1" onclick="addobject(1)">Add<br>
+            <input type="radio" name="option" value="corde" onclick="addobject('corde')">Add<br>
         </article>
         <article>
             <img src="../assets/img/objects/cadre.png">
-            <input type="radio" name="option" value="2" onclick="addobject(2)">Add<br>
+            <input type="radio" name="option" value="cadre" onclick="addobject('cadre')">Add<br>
         </article>
         <article>
-            <img src="../assets/img/objects/lunettes.png">
-            <input type="radio" name="option" value="3" onclick="addobject(3)">Add<br>
+            <img src="../assets/img/objects/lunette.png">
+            <input type="radio" name="option" value="lunette" onclick="addobject('lunette')">Add<br>
+        </article>
+        <article>
+            <img src="../assets/img/objects/marvin.png">
+            <input type="radio" name="option" value="marvin" onclick="addobject('marvin')">Add<br>
         </article>
         <div class="clear"></div>
     </div>

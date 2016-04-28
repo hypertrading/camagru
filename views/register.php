@@ -3,7 +3,7 @@ include "header.php";
 ?>
 <section class="main">
     <h3>Register</h3>
-    <form method="post" action="create.php">
+    <form method="post" action="../controllers/create_user.php">
         <label>
             Email: <input type="email" name="email" placeholder="Your email"></label><br>
         <label>
