@@ -26,4 +26,14 @@ function query_rm_one_creation($db, $id)
     mysqli_query($db, $query);
     return TRUE;
 }
+
+function query_get_all_creation($db){
+    $query = "SELECT `id` FROM `creation` ORDER BY `date_creation` DESC";
+    $result = mysqli_query($db, $query);
+    while ($tmp = mysqli_fetch_assoc($result))
+    {
+        $data[] = $tmp;
+    }
+    return $data;
+}
 ?>

@@ -57,11 +57,24 @@ function get_user_creation($id)
     $_SESSION['msg'] = "Error : DB Unloaded";
     return FALSE;
 }
+
 function new_creation($id_user){
     if ($db = db_init())
     {
         include '../model/creation_query.php';
         $result = query_new_creation($db, $id_user);
+        return $result;
+    }
+    $_SESSION['msg'] = "Error : DB Unloaded";
+    return FALSE;
+}
+
+function get_all_creation()
+{
+    if ($db = db_init())
+    {
+        include '../model/creation_query.php';
+        $result = query_get_all_creation($db);
         return $result;
     }
     $_SESSION['msg'] = "Error : DB Unloaded";
