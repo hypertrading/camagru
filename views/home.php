@@ -1,8 +1,9 @@
 <?php
 include "header.php";
 ?>
-
+<div class="section">
     <div class="objects">
+        <h3>New creation</h3>
         <article>
             <img src="../assets/img/objects/corde.png">
             <input type="radio" name="option" value="corde" onclick="addobject('corde')">Add<br>
@@ -25,12 +26,22 @@ include "header.php";
     <div class="cadre">
         <video id="video"></video>
         <img src="" class="hidden" id="picture">
-        <button disabled id="startbutton">Prendre une photo</button>
+        <button disabled class="startbutton" id="startbutton">Take the picture</button>
     </div>
 
     <canvas id="canvas" hidden></canvas>
     <div class="clear"></div>
 
+    <p>or upload directly your picture : <small>(jpeg only)</small></p>
+    <input type="file" name="file" id="file">
+    <br>
+    <button disabled id="submit" onclick="send()">Send</button>
+</div>
+<div class="aside">
+    <h3>Your old creations</h3>
+
+</div>
+<div class="clear"></div>
 <script src="../assets/webcam.js" type="text/javascript"></script>
 <script src="../assets/script.js" type="text/javascript"></script>
 <?php

@@ -34,6 +34,7 @@ function auth($login, $passwd)
         $passwd = hash("whirlpool", $passwd);
         if ($passwd == $user['passwd'])
         {
+            $_SESSION['user'] = $user;
             if ($user['droits'] == 1)
                 $_SESSION['admin'] = 1;
             return TRUE;

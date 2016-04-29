@@ -15,9 +15,14 @@ a{
 }
 .main{
     margin: 0 auto;
-    width: 90vw;
-    max-width: 1000px;
-
+    max-width: 1100px;
+    width: 100%;
+}
+.border-red{
+    border: 1px red solid;
+}
+.float-right{
+    float: right;
 }
 /**
 ====  Header
@@ -30,6 +35,21 @@ header{
 .logo{
     width: 15vw;
     max-width: 150px;
+}
+.button-nav{
+    position: relative;
+}
+.section{
+    max-width: 600px;
+    width: 100%;
+    border: 1px red solid;
+    float: left;
+}
+.aside{
+    max-width: 400px;
+    width: 100%;
+    border: 1px red solid;
+    float: left;
 }
 
 /**
@@ -70,7 +90,7 @@ header{
     max-height: 100%;
     z-index: 2;
 }
-#startbutton{
+.startbutton{
     position: absolute;
     bottom: 0;
     left: 0;

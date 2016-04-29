@@ -8,7 +8,6 @@ if ($_POST['login'] != "" && $_POST['passwd'] != "")
     {
         if (auth($_POST['login'], $_POST['passwd']))
         {
-            $_SESSION['login'] = $_POST['login'];
             $_SESSION['msg'] = "Connexion granted";
             header("Location: ../views/home.php");
             exit ();
@@ -22,12 +21,12 @@ if ($_POST['login'] != "" && $_POST['passwd'] != "")
     }
     else
     {
-        $_SESSION['msg'] = "Wrong Format";
+        $_SESSION['msg'] = "Error : Wrong Format";
         header("Location: ../views/login.php");
         exit ();
     }
 }
-$_SESSION['msg'] = "ERROR login (form empty or partially)";
+$_SESSION['msg'] = "Error : Form empty or partially";
 header("Location: ../views/login.php");
 exit ();
 ?>
