@@ -17,6 +17,7 @@ session_start();?>
                 <a href="login.php"><button>Log-in</button></a>
                 <a href="register.php"><button>Register</button></a>
             <?php }else {?>
+                <a href="montage.php"><button>Montage page</button></a>
                 <a href="../controllers/logout.php"><button><?php echo $_SESSION['user']['login']?> want logout</button></a>
                 <?php if ($_SESSION['admin'] == 1){?>
                     <a href="#"><button>Backoffice Admin</button></a>

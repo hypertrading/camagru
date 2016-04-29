@@ -25,5 +25,5 @@ imagepng($image, $path);
 imagedestroy($image);
 imagedestroy($item);
 
-header('Location: ../views/home.php');
+header('Location: ../views/montage.php');
 ?>
