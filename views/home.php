@@ -1,5 +1,6 @@
 <?php
 include "header.php";
+include "../controllers/main_functions.php";
 ?>
 <div class="section">
     <div class="objects">
@@ -39,7 +40,23 @@ include "header.php";
 </div>
 <div class="aside">
     <h3>Your old creations</h3>
-
+    <?php
+    $creations = get_user_creation($_SESSION['user']['id']);
+    if (isset($creations)) {
+        echo "<table>";
+        foreach ($creations as $creation) {
+            echo "<tr>
+                    <td><img src='../assets/img/user_creations/".$creation['id'].".png'></td>
+                    <td>
+                        <form method='POST' action='../controllers/remove_one_creation.php'>
+                            <button type='submit' name='id' value='".$creation['id']."'>Delete</button>
+                        </form>
+                    </td>
+                </tr>";
+        }
+        echo "</table>";
+    }
+    ?>
 </div>
 <div class="clear"></div>
 <script src="../assets/webcam.js" type="text/javascript"></script>

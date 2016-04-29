@@ -1,6 +1,13 @@
+html {
+    height: 100%;
+}
 body
 {
-background: url("../img/bg.jpg");
+    background: url("../img/bg.jpg") fixed;
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
+    position: relative;
 }
 a{
     text-decoration: none;
@@ -42,13 +49,11 @@ header{
 .section{
     max-width: 600px;
     width: 100%;
-    border: 1px red solid;
     float: left;
 }
 .aside{
     max-width: 400px;
     width: 100%;
-    border: 1px red solid;
     float: left;
 }
 
@@ -96,4 +101,18 @@ header{
     left: 0;
     margin: 0;
     z-index: 3;
+}
+
+/**
+==== footer
+**/
+.push{
+    height: 50px;
+}
+footer{
+    background-color: aliceblue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }

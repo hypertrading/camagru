@@ -1,7 +1,6 @@
 <?php
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 session_start();?>
-<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -29,7 +28,7 @@ session_start();?>
         <a href="home.php"><img class="logo" src="../assets/img/logo.png"></a>
     </div>
 </header>
-<section class="main">
+<div class="main">
 <?php
 if ($_SESSION['msg'] != NULL)
 {

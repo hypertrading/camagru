@@ -14,7 +14,6 @@ $new_user_admin = "INSERT INTO `users` (`login`, `passwd`, `droits`) VALUES ('ad
 
 $create_table_creation = "CREATE TABLE `creation` (
                           id INT (6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                          nom VARCHAR(30) NOT NULL,
                           id_user INT(6) NOT NULL,
                           date_creation TIMESTAMP)";
 

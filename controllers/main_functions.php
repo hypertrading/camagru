@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 function db_init()
 {
     //$server = "mysql-hypertrading.alwaysdata.net";
@@ -41,6 +43,28 @@ function auth($login, $passwd)
         }
         return FALSE;
     }
+    return FALSE;
+}
+
+function get_user_creation($id)
+{
+    if ($db = db_init())
+    {
+        include '../model/creation_query.php';
+        $result = query_get_user_creation($db, $id);
+        return $result;
+    }
+    $_SESSION['msg'] = "Error : DB Unloaded";
+    return FALSE;
+}
+function new_creation($id_user){
+    if ($db = db_init())
+    {
+        include '../model/creation_query.php';
+        $result = query_new_creation($db, $id_user);
+        return $result;
+    }
+    $_SESSION['msg'] = "Error : DB Unloaded";
     return FALSE;
 }
 ?>
