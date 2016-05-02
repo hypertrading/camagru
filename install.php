@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "controllers/main_functions.php";
 
 $create_table_users = "CREATE TABLE `users` (
@@ -17,6 +16,12 @@ $create_table_creation = "CREATE TABLE `creation` (
                           id_user INT(6) NOT NULL,
                           date_creation TIMESTAMP)";
 
+$create_table_comments = "CREATE TABLE `comments` (
+              id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+              comment VARCHAR (255) NOT NULL,
+              creation_id INT(6) NOT NULL,
+              user_id INT(6) NOT NULL,
+              date_creation TIMESTAMP)";
 /*$server = "mysql-hypertrading.alwaysdata.net";
 $username = "121422";
 $passwd = "rootme42";*/
@@ -36,7 +41,7 @@ else
     }
     else
     {
-        echo "Creation database ok<br>";
+        echo "Connection to database camagru ok<br>";
         mysqli_close($db);
     }
     if ($db = db_init())
@@ -56,6 +61,7 @@ else
         }
         else
             echo "Table users already exists<br>";
+
         $requete = mysqli_query($db, "SHOW TABLES LIKE 'creation' ");
         if (mysqli_num_rows($requete) != 1) {
             if (mysqli_query($db, $create_table_creation))
@@ -65,6 +71,16 @@ else
         }
         else
             echo "Table users already exists<br>";
+
+        $requete = mysqli_query($db, "SHOW TABLES LIKE 'comments' ");
+        if (mysqli_num_rows($requete) != 1) {
+            if (mysqli_query($db, $create_table_comments))
+                echo "Table comments ok<br>";
+            else
+                echo "Error creation table comments<br>";
+        }
+        else
+            echo "Table comments already exists<br>";
     }
     else
         echo "Failure in connection database camagru !";

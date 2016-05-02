@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 function db_init()
 {
     //$server = "mysql-hypertrading.alwaysdata.net";
@@ -69,13 +68,37 @@ function new_creation($id_user){
     return FALSE;
 }
 
-function get_all_creation()
+function pagination()
 {
     if ($db = db_init())
     {
         include '../model/creation_query.php';
-        $result = query_get_all_creation($db);
+        $count = query_count_creation($db);
+        $count = $count['COUNT(id)'];
+        $nb_page = ceil($count / 5);
+        return $nb_page;
+    }
+    $_SESSION['msg'] = "Error : DB Unloaded";
+    return FALSE;
+}
+
+function get_all_creation($page)
+{
+    if ($db = db_init())
+    {
+        $result = query_get_all_creation($db, $page);
         return $result;
+    }
+    $_SESSION['msg'] = "Error : DB Unloaded";
+    return FALSE;
+}
+
+function get_comment($id)
+{
+    if ($db = db_init())
+    {
+        $comment = query_get_comment($db, $id);
+        return $comment;
     }
     $_SESSION['msg'] = "Error : DB Unloaded";
     return FALSE;

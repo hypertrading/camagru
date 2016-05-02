@@ -31,6 +31,9 @@ a{
 .float-right{
     float: right;
 }
+.float-left{
+    float: left;
+}
 /**
 ====  Header
 **/
