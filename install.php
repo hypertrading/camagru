@@ -16,6 +16,12 @@ $create_table_creation = "CREATE TABLE `creation` (
                           id_user INT(6) NOT NULL,
                           date_creation TIMESTAMP)";
 
+$create_table_likes = "CREATE TABLE `likes` (
+                          id INT (6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                          user_id INT(6) NOT NULL,
+                          creation_id INT(6) NOT NULL,
+                          date_liked TIMESTAMP)";
+
 $create_table_comments = "CREATE TABLE `comments` (
               id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
               comment VARCHAR (255) NOT NULL,
@@ -81,6 +87,16 @@ else
         }
         else
             echo "Table comments already exists<br>";
+
+        $requete = mysqli_query($db, "SHOW TABLES LIKE 'likes' ");
+        if (mysqli_num_rows($requete) != 1) {
+            if (mysqli_query($db, $create_table_likes))
+                echo "Table likes ok<br>";
+            else
+                echo "Error creation table likes<br>";
+        }
+        else
+            echo "Table likes already exists<br>";
     }
     else
         echo "Failure in connection database camagru !";

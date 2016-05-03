@@ -9,7 +9,7 @@ if ($_POST['login'] != "" && $_POST['passwd'] != "")
         if (auth($_POST['login'], $_POST['passwd']))
         {
             $_SESSION['msg'] = "Connexion granted";
-            header("Location: ../views/home.php");
+            header("Location: ../views/home_class.php");
             exit ();
         }
         else

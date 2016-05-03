@@ -1,6 +1,12 @@
 <?php
 include "header.php";
 include "../controllers/main_functions.php";
+if($_SESSION['user'] == NULL)
+{
+    $_SESSION['msg'] = "You need to be log for enter in this area ! Sorry.";
+    header('Location: login.php');
+    exit();
+}
 ?>
 <div class="section">
     <div class="objects">

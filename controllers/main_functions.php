@@ -1,5 +1,8 @@
 <?php
-session_start();
+include '../model/creation_model_class.php';
+include '../model/creation_query.php'; // A supprimer
+$creation_model = new Creation_model_class();
+
 function db_init()
 {
     //$server = "mysql-hypertrading.alwaysdata.net";
@@ -49,7 +52,6 @@ function get_user_creation($id)
 {
     if ($db = db_init())
     {
-        include '../model/creation_query.php';
         $result = query_get_user_creation($db, $id);
         return $result;
     }
@@ -60,7 +62,6 @@ function get_user_creation($id)
 function new_creation($id_user){
     if ($db = db_init())
     {
-        include '../model/creation_query.php';
         $result = query_new_creation($db, $id_user);
         return $result;
     }
@@ -72,7 +73,6 @@ function pagination()
 {
     if ($db = db_init())
     {
-        include '../model/creation_query.php';
         $count = query_count_creation($db);
         $count = $count['COUNT(id)'];
         $nb_page = ceil($count / 5);
@@ -81,6 +81,7 @@ function pagination()
     $_SESSION['msg'] = "Error : DB Unloaded";
     return FALSE;
 }
+
 
 function get_all_creation($page)
 {
@@ -102,5 +103,17 @@ function get_comment($id)
     }
     $_SESSION['msg'] = "Error : DB Unloaded";
     return FALSE;
+}
+
+function already_like($creation_id, $user_id)
+{
+    if ($db = db_init())
+    {
+        if (query_already_like($db, $creation_id, $user_id) == TRUE)
+            return TRUE;
+        return FALSE;
+    }
+    $_SESSION['msg'] = "Error : DB Unloaded";
+    return TRUE;
 }
 ?>

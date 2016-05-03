@@ -24,6 +24,10 @@ function query_rm_one_creation($db, $id)
 {
     $query = "DELETE FROM `creation` WHERE id=".$id;
     mysqli_query($db, $query);
+    $query = "DELETE FROM `likes` WHERE creation_id=".$id;
+    mysqli_query($db, $query);
+    $query = "DELETE FROM `comments` WHERE creation_id=".$id;
+    mysqli_query($db, $query);
     return TRUE;
 }
 
@@ -42,6 +46,11 @@ function query_get_all_creation($db, $page)
     $result = mysqli_query($db, $query);
     while ($tmp = mysqli_fetch_assoc($result))
     {
+
+        $query = "SELECT count(id) AS nbr_likes FROM LIKES WHERE creation_id = ".$tmp['id'];
+        $like = mysqli_query($db, $query);
+        $like = mysqli_fetch_assoc($like);
+        $tmp['nbr_likes'] = $like['nbr_likes'];
         $data[] = $tmp;
     }
     return $data;
@@ -68,5 +77,31 @@ function query_get_comment($db, $id)
         $data[] = $tmp;
     }
     return $data;
+}
+
+function query_liked($db, $creation_id, $user_id)
+{
+    $query = "INSERT INTO `likes` (`creation_id`, `user_id`) VALUES ('$creation_id', '$user_id')";
+    if (mysqli_query($db, $query) == FALSE)
+        return FALSE;
+    return TRUE;
+}
+function query_already_like($db, $creation_id, $user_id)
+{
+    $query = "SELECT count(id) AS nbr FROM `likes` WHERE user_id=$user_id AND creation_id=$creation_id";
+    $nbr = mysqli_query($db, $query);
+    $nbr = mysqli_fetch_assoc($nbr);
+    if($nbr['nbr'] > 0)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+function query_unlike($db, $creation_id, $user_id)
+{
+    $query = "DELETE FROM `likes` WHERE user_id=$user_id AND creation_id=$creation_id";
+    if (mysqli_query($db, $query) == FALSE)
+        return FALSE;
+    return TRUE;
 }
 ?>
