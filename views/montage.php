@@ -1,12 +1,13 @@
 <?php
 include "header.php";
-include "../controllers/main_functions.php";
+include '../controllers/montage_class.php';
 if($_SESSION['user'] == NULL)
 {
     $_SESSION['msg'] = "You need to be log for enter in this area ! Sorry.";
     header('Location: login.php');
     exit();
 }
+$montage = new montage();
 ?>
 <div class="section">
     <div class="objects">
@@ -47,7 +48,7 @@ if($_SESSION['user'] == NULL)
 <div class="aside">
     <h3>Your old creations</h3>
     <?php
-    $creations = get_user_creation($_SESSION['user']['id']);
+    $creations = $montage->get_user_creation($_SESSION['user']['id']);
     if (isset($creations)) {
         echo "<table>";
         foreach ($creations as $creation) {

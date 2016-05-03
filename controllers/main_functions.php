@@ -1,4 +1,4 @@
-<?php
+<?php/*
 include '../model/creation_model_class.php';
 include '../model/creation_query.php'; // A supprimer
 $creation_model = new Creation_model_class();
@@ -115,5 +115,5 @@ function already_like($creation_id, $user_id)
     }
     $_SESSION['msg'] = "Error : DB Unloaded";
     return TRUE;
-}
+}*/
 ?>

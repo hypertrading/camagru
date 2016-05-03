@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 session_start();?>
 <html lang="fr">
 <head>

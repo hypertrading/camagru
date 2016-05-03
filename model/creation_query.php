@@ -1,4 +1,4 @@
-<?php
+<?php/*
 function query_get_user_creation($db, $id)
 {
     $query = "SELECT `id` FROM `creation` WHERE id_user=$id ORDER BY date_creation DESC";
@@ -103,5 +103,5 @@ function query_unlike($db, $creation_id, $user_id)
     if (mysqli_query($db, $query) == FALSE)
         return FALSE;
     return TRUE;
-}
+}*/
 ?>

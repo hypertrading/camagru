@@ -13,7 +13,7 @@ class Creation_model_class extends Model_class {
         $query = "INSERT INTO `creation` (`id_user`) VALUE (".$id_user.")";
         $this->db->exec($query);
         $query = "SELECT `id` FROM `creation` ORDER BY date_creation DESC LIMIT 1";
-        $result = $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        $result = $this->db->query($query)->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
 

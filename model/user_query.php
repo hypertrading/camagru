@@ -1,4 +1,4 @@
-<?php
+<?php/*
 function query_get_one_user($db, $login)
 {
     $query = "SELECT * FROM `users` WHERE login='".$login."'";
@@ -14,5 +14,5 @@ function query_add_new_user($db, $login, $passwd, $email)
     if (mysqli_query($db, $query))
         return TRUE;
     return FALSE;
-}
+}*/
 ?>
