@@ -38,7 +38,12 @@ class Creation_model_class extends Model_class {
     function get_all_creation($page)
     {
         $offset = 5 * $page;
-        $query = "SELECT `id`, `date_creation` FROM `creation` ORDER BY `date_creation` DESC LIMIT $offset, 5";
+        $query = "SELECT c.id, c.date_creation, u.login
+                  FROM `creation` c
+                  LEFT JOIN `users` u
+                  ON  u.id=c.id_user
+                  ORDER BY c.date_creation DESC
+                  LIMIT $offset, 5";
         $result = $this->db->query($query);
         while ($tmp = $result->fetch(PDO::FETCH_ASSOC))
         {

@@ -1,5 +1,4 @@
 <?php
-//error_reporting(E_ERROR | E_WARNING | E_PARSE);
 session_start();?>
 <html lang="fr">
 <head>
@@ -8,25 +7,27 @@ session_start();?>
     <title>Camagru</title>
     <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Seaweed+Script' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <header>
     <div class="head">
         <div class="button-nav float-right">
             <?php if (!isset($_SESSION['user'])){?>
-                <a href="login.php"><button>Log-in</button></a>
-                <a href="register.php"><button>Register</button></a>
+                <a href="login.php"><button class="button">Log-in</button></a>
+                <a href="register.php"><button class="button">Register</button></a>
             <?php }else {?>
-                <a href="montage.php"><button>Montage page</button></a>
-                <a href="../controllers/logout.php"><button><?php echo $_SESSION['user']['login']?> want logout</button></a>
+                <a href="montage.php"><button class="button">Montage page</button></a>
+                <a href="../controllers/logout.php"><button class="button"><?php echo $_SESSION['user']['login']?> want logout</button></a>
                 <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1){?>
-                    <a href="#"><button>Backoffice Admin</button></a>
+                    <a href="#"><button class="button">Backoffice Admin</button></a>
                 <?php }else {?>
-                    <a href="../controllers/user_profil.php"><button><?php echo $_SESSION['user']['login']?>'s profil</button></a>
+                    <a href="../controllers/user_profil.php"><button class="button"><?php echo $_SESSION['user']['login']?>'s profil</button></a>
                 <?php }}?>
         </div>
         <div class="clear"></div>
-        <a href="home.php?page=0"><img class="logo" src="../assets/img/logo.png"></a>
+        <a href="home.php?page=0" class="banniere"><img class="logo" src="../assets/img/logo.png"></a>
+
     </div>
 </header>
 <div class="main">

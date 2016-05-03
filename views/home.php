@@ -18,15 +18,16 @@ if (isset($creations))
             echo "<div class='creation float-left'>
                         <img src='../assets/img/user_creations/".$creation['id'].".png'>
                         <p>
-                            <small>".$creation['date_creation']."</small>
-                            <3 ".$creation['nbr_likes'];
+                            <small>".$creation['date_creation']." by </small>
+                            <small>".$creation['login']."</small>
+                            <span class='likes'> ".$creation['nbr_likes']."</span>";
             if(isset($_SESSION['user']) && $home->already_like($creation['id'], $_SESSION['user']['id']) == FALSE)
             {
                echo "
                             <form method='post' action='../controllers/like_it.php'>
                             <input type='number' name='creation_id' value='" . $creation['id'] . "' hidden>
                             <input type='number' name='user_id' value='" . $_SESSION['user']['id'] . "' hidden>
-                            <input type='submit' value='Like'></form>";
+                            <input type='submit' value='Like' class=\"button\"></form>";
             }
             else if (isset($_SESSION['user']) && $home->already_like($creation['id'], $_SESSION['user']['id']) == TRUE)
             {
@@ -34,27 +35,27 @@ if (isset($creations))
                             <form method='post' action='../controllers/unlike.php'>
                             <input type='number' name='creation_id' value='" . $creation['id'] . "' hidden>
                             <input type='number' name='user_id' value='" . $_SESSION['user']['id'] . "' hidden>
-                            <input type='submit' value='Unlike'></form>";
+                            <input type='submit' value='Unlike' class=\"button\"></form>";
             }
             echo "</p></div>";
+
             echo "<div class='comments-box float-left'>";
+            if (isset($_SESSION['user']))
+            {
+                echo "<form method='post' action='../controllers/add_comment.php'>
+                            <label class='comment-it'>
+                                Comment :<input type='text' name='comment'><input type='submit' Value='Send' class=\"button\">
+                            </label>
+                            <input type='number' name='creation_id' value='".$creation['id']."' hidden>
+                            <input type='number' name='user_id' value='".$_SESSION['user']['id']."' hidden>
+                        </form>";
+            }
             if (isset($comments)) {
                 foreach ($comments as $comment) {
                     echo "<div class='comment'>
                             <p><small>".$comment['date_creation']." by ".$comment['login']."</small> ".$comment['comment']."</p>
                           </div>";
                 }
-            }
-            if (isset($_SESSION['user']))
-            {
-                echo "<form method='post' action='../controllers/add_comment.php'>
-                            <label>
-                                Comment :<input type='text' name='comment'>
-                            </label>
-                            <input type='number' name='creation_id' value='".$creation['id']."' hidden>
-                            <input type='number' name='user_id' value='".$_SESSION['user']['id']."' hidden>
-                            <input type='submit' Value='Send' >
-                        </form>";
             }
             echo "</div>";
             echo "<div class='clear'></div>"; // Clear before next creation
