@@ -1,14 +1,14 @@
 <?php
 class Model_class {
-    protected $db;
-    private $DB_DSN = 'mysql:host=localhost;dbname=camagru;charset=utf8';
-    private $DB_USER = 'root';
-    private $DB_PASSWORD = '';
+    public $db;
     function __construct()
     {
         try
         {
-            $this->db = new PDO($this->DB_DSN, $this->DB_USER, $this->DB_PASSWORD);
+            require_once '../config/database.php';
+            $setup_db = new setup_db();
+            $this->db = new PDO($setup_db->get_DSN(), $setup_db->get_USER(), $setup_db->get_PASSWORD());
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch(Exception $e)
         {

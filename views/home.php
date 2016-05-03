@@ -3,7 +3,7 @@ include "header.php";
 include "../controllers/home_class.php";
 $home = new home();
 $nb_page = $home->pagination();
-if ($_GET['page'] == "")
+if (!isset($_GET['page']))
     $creations = $home->get_all_creation(0);
 else
     $creations = $home->get_all_creation($_GET['page']);
@@ -20,7 +20,7 @@ if (isset($creations))
                         <p>
                             <small>".$creation['date_creation']."</small>
                             <3 ".$creation['nbr_likes'];
-            if($_SESSION['user'] != NULL && $home->already_like($creation['id'], $_SESSION['user']['id']) == FALSE)
+            if(isset($_SESSION['user']) && $home->already_like($creation['id'], $_SESSION['user']['id']) == FALSE)
             {
                echo "
                             <form method='post' action='../controllers/like_it.php'>
@@ -28,7 +28,7 @@ if (isset($creations))
                             <input type='number' name='user_id' value='" . $_SESSION['user']['id'] . "' hidden>
                             <input type='submit' value='Like'></form>";
             }
-            else if ($_SESSION['user'] != NULL && $home->already_like($creation['id'], $_SESSION['user']['id']) == TRUE)
+            else if (isset($_SESSION['user']) && $home->already_like($creation['id'], $_SESSION['user']['id']) == TRUE)
             {
                 echo "
                             <form method='post' action='../controllers/unlike.php'>
@@ -45,7 +45,7 @@ if (isset($creations))
                           </div>";
                 }
             }
-            if ($_SESSION['user'] != NULL)
+            if (isset($_SESSION['user']))
             {
                 echo "<form method='post' action='../controllers/add_comment.php'>
                             <label>

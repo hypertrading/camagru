@@ -13,25 +13,25 @@ session_start();?>
 <header>
     <div class="head">
         <div class="button-nav float-right">
-            <?php if ($_SESSION['user'] == NULL){?>
+            <?php if (!isset($_SESSION['user'])){?>
                 <a href="login.php"><button>Log-in</button></a>
                 <a href="register.php"><button>Register</button></a>
             <?php }else {?>
                 <a href="montage.php"><button>Montage page</button></a>
                 <a href="../controllers/logout.php"><button><?php echo $_SESSION['user']['login']?> want logout</button></a>
-                <?php if ($_SESSION['admin'] == 1){?>
+                <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 1){?>
                     <a href="#"><button>Backoffice Admin</button></a>
                 <?php }else {?>
                     <a href="../controllers/user_profil.php"><button><?php echo $_SESSION['user']['login']?>'s profil</button></a>
                 <?php }}?>
         </div>
         <div class="clear"></div>
-        <a href="home.php"><img class="logo" src="../assets/img/logo.png"></a>
+        <a href="home.php?page=0"><img class="logo" src="../assets/img/logo.png"></a>
     </div>
 </header>
 <div class="main">
 <?php
-if ($_SESSION['msg'] != NULL)
+if (isset($_SESSION['msg']))
 {
     echo "<div class='msg'><p>";
     echo $_SESSION['msg'];
