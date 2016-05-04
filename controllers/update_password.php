@@ -9,13 +9,8 @@ if($user->check_form($_POST['passwd']) == FALSE)
     exit ();
 }
 $new_pass = hash('whirlpool', $_POST['passwd']);
-if($user->update_password($_POST['id'], $new_pass))
-{
-    $_SESSION['msg'] = "Your password has been update.";
-    header("Location: ../views/login.php");
-    exit ();
-}
-$_SESSION['msg'] = "Error : blame fucking developer";
+$user->update_password($_POST['id'], $new_pass);
+$_SESSION['msg'] = "Your password has been update.";
 header("Location: ../views/login.php");
 exit ();
 ?>

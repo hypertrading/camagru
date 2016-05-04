@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(isset($_SESSION['user']['login']))
+{
+    header("Location: ../views/home.php?page=0");
+    exit ();
+}
 include "header.php";
 ?>
 <section class="">
@@ -10,7 +16,8 @@ include "header.php";
             Password: <input type="password" name="passwd" placeholder="Your password"></label>
         <br>
         <input type="submit" name="submit" value="Connection" class="button">
-        <a href="lost_password.php" class="button">Forget your password ?</a>
+        <br>
+        <a href="lost_password.php">Forget your password ?</a>
     </form>
 </section>
 <?php

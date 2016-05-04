@@ -19,7 +19,7 @@ if(isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) 
 								<body>
 								 	<h3>Hello ! Apparently you lost you password.</h3>
 								 	<p>Use this link to set a new password.
-								 	<a href="'.$_SERVER['SERVER_NAME'].'/camagru/controllers/set_new_password.php?login='.$login.'&id='.$id.'" onclick="javascript:event.target.port=8080">New password</a></p>
+								 	<a href="http://'.$_SERVER['SERVER_NAME'].':8080/camagru/views/set_new_password.php?login='.$login.'&id='.$id.'" onclick="javascript:event.target.port=8080">New password</a></p>
 								</body>
 								</html>';
         $headers  = 'MIME-Version: 1.0' . "\r\n";
