@@ -141,6 +141,9 @@ header{
 /**
 ====                            Home
 **/
+.creation{
+    margin-left: 10px;
+}
 .creation img{
     padding: 2px;
     background-color: white;
@@ -156,7 +159,9 @@ header{
     padding : 6px 12px 6px 12px;
     color: white;
     background-color: #315C7F;
-    border-radius: 4px;
+}
+.comments-box{
+    margin-left: 10px;
 }
 
 /**

@@ -19,11 +19,10 @@ class User_model_class extends Model_class {
 
     function auth($login, $passwd)
     {
-
         if ($user = $this->get_one_user($login))
         {
             $passwd = hash("whirlpool", $passwd);
-            if ($passwd == $user['passwd'])
+            if ($passwd == $user['passwd'] && $user['status'] == 1)
             {
                 $_SESSION['user'] = $user;
                 if ($user['droits'] == 1)
@@ -40,6 +39,14 @@ class User_model_class extends Model_class {
         if (preg_match("/^\w{4,16}$/", $str) == 0)
             return FALSE;
         return TRUE;
+    }
+
+    function valid_acount($email)
+    {
+        $query = "UPDATE `users` SET `status`=1 WHERE `email`='$email'";
+        if ($this->db->exec($query))
+            return TRUE;
+        return FALSE;
     }
 }
 ?>

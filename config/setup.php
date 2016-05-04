@@ -8,9 +8,10 @@ function init_db()
                   email VARCHAR(45) NOT NULL,
                   passwd varchar(255) NOT NULL,
                   droits INT(2) NOT NULL DEFAULT 0,
+                  status INT(2) NOT NULL DEFAULT 0,
                   date_register TIMESTAMP)";
     $passwd_admin = hash('whirlpool', "root");
-    $new_user_admin = "INSERT INTO `users` (`login`, `passwd`, `droits`) VALUES ('admin', '" . $passwd_admin . "', '1')";
+    $new_user_admin = "INSERT INTO `users` (`login`, `passwd`, `droits`, `status`) VALUES ('admin', '" . $passwd_admin . "', '1', '1')";
 
     $create_table_creation = "CREATE TABLE IF NOT EXISTS `creation` (
                               id INT (6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,

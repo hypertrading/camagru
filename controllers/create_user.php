@@ -2,7 +2,7 @@
 session_start();
 include '../model/user_model_class.php';
 $user = new User_model_class();
-if ($_POST['submit'] != "OK" || $_POST['login'] == "" || $_POST['passwd'] == "" || $_POST['email'] == "")
+if ($_POST['login'] == "" || $_POST['passwd'] == "" || $_POST['email'] == "")
 {
 	$_SESSION['msg'] = "Error : Form empty or partially";
 	header("Location: ../views/register.php");
@@ -26,7 +26,22 @@ else {
 				header("Location: ../views/register.php");
 				exit ();
 			}
-			$_SESSION['msg'] = "Success";
+			$to = $_POST['email'];
+			$subject = "Welcome in Camagru";
+			$message =  $message = '
+							 	<html>
+								<head>
+									<title>Validation inscription</title>
+								</head>
+								<body>
+								 	<h3>Hello ! You just register on Camagru</h3>
+								 	<p>Plz valide you inscription on this link<a href="localhost/camagru/controllers/valid_acount.php?email='.$to.'">Lienresteafairehihi.danslamerde</a></p>
+								</body>
+								</html>';
+			$headers  = 'MIME-Version: 1.0' . "\r\n";
+			$headers .= 'Content-type: text/html; charset=UTF8' . "\r\n";
+			mail($to, $subject, $message, $headers);
+			$_SESSION['msg'] = "Success, you just receved an email to finish you inscription";
 			header("Location: ../views/login.php");
 			exit ();
 		}
