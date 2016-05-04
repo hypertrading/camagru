@@ -10,6 +10,7 @@ include "header.php";
             Password: <input type="password" name="passwd" placeholder="Your password"></label>
         <br>
         <input type="submit" name="submit" value="Connection" class="button">
+        <a href="lost_password.php" class="button">Forget your password ?</a>
     </form>
 </section>
 <?php

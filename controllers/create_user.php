@@ -35,7 +35,7 @@ else {
 								</head>
 								<body>
 								 	<h3>Hello ! You just register on Camagru</h3>
-								 	<p>Plz valide you inscription on this link<a href="localhost/camagru/controllers/valid_acount.php?email='.$to.'">Lienresteafairehihi.danslamerde</a></p>
+								 	<p>Plz valide you inscription on this link<a href="localhost:8080/camagru/controllers/valid_acount.php?email='.$to.'">Lienresteafairehihi.danslamerde</a></p>
 								</body>
 								</html>';
 			$headers  = 'MIME-Version: 1.0' . "\r\n";

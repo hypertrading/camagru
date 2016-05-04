@@ -1,9 +1,16 @@
 <?php
-include 'model_class.php';
+include 'Model_class.php';
 class User_model_class extends Model_class {
     function get_one_user($login)
     {
         $query = "SELECT * FROM `users` WHERE login='$login'";
+        $result = $this->db->query($query)->fetch();
+        return $result;
+    }
+
+    function get_one_by_email($email)
+    {
+        $query = "SELECT * FROM `users` WHERE email='$email'";
         $result = $this->db->query($query)->fetch();
         return $result;
     }
@@ -44,6 +51,14 @@ class User_model_class extends Model_class {
     function valid_acount($email)
     {
         $query = "UPDATE `users` SET `status`=1 WHERE `email`='$email'";
+        if ($this->db->exec($query))
+            return TRUE;
+        return FALSE;
+    }
+    
+    function update_password($id, $new_pass)
+    {
+        $query = "UPDATE `users` SET `passwd`='$new_pass' WHERE `id`='$id'";
         if ($this->db->exec($query))
             return TRUE;
         return FALSE;

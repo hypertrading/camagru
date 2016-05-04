@@ -1,5 +1,5 @@
 <?php
-include 'model_class.php';
+include 'Model_class.php';
 class Creation_model_class extends Model_class {
     function get_user_creation($id)
     {
@@ -48,7 +48,7 @@ class Creation_model_class extends Model_class {
         while ($tmp = $result->fetch(PDO::FETCH_ASSOC))
         {
 
-            $query = "SELECT count(id) AS nbr_likes FROM LIKES WHERE creation_id = ".$tmp['id'];
+            $query = "SELECT count(id) AS nbr_likes FROM `likes` WHERE `creation_id`= ".$tmp['id'];
             $like = $this->db->query($query)->fetch(PDO::FETCH_ASSOC);
             $tmp['nbr_likes'] = $like['nbr_likes'];
             $data[] = $tmp;

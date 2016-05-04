@@ -1,12 +1,13 @@
 <?php
-include "header.php";
-include '../controllers/montage_class.php';
+session_start();
 if($_SESSION['user'] == NULL)
 {
     $_SESSION['msg'] = "You need to be log for enter in this area ! Sorry.";
     header('Location: login.php');
     exit();
 }
+include "header.php";
+include '../controllers/montage_class.php';
 $montage = new montage();
 ?>
 <div class="section">
