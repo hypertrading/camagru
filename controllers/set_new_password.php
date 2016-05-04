@@ -3,7 +3,7 @@ session_start();
 
 include '../model/user_model_class.php';
 $user = new User_model_class();
-if (isset($_GET['login']) && isset($_GET['id']) && $user->check_form($_GET['login']) == true && is_numeric($_GET['id']))
+if (isset($_GET['login']) && isset($_GET['id']) && $user->check_form($_GET['login']) == TRUE && is_numeric($_GET['id']))
 {
     $acount = $user->get_one_user($_GET['login']);
     if(isset($acount['login']) && $acount['id'] == $_GET['id'])

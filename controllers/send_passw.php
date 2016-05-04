@@ -2,7 +2,7 @@
 session_start();
 include '../model/user_model_class.php';
 $user = new User_model_class();
-if(isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) != FALSE)
+if(isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == TRUE)
 {
     $acount = $user->get_one_by_email($_POST['email']);
     if (isset($acount['login']))
@@ -30,4 +30,8 @@ if(isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) 
         exit ();
     }
 }
+
+$_SESSION['msg'] = "Error : Invalid";
+header("Location: ../views/lost_password.php");
+exit ();
 ?>

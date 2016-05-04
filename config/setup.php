@@ -1,5 +1,5 @@
 <?php
-include "../model/model_class.php";
+include "../model/Model_class.php";
 function init_db()
 {
     $create_table_users = "CREATE TABLE IF NOT EXISTS `users` (
@@ -32,8 +32,8 @@ function init_db()
                   date_creation TIMESTAMP)";
     require_once '../config/database.php';
     $setup_db = new setup_db();
-    $tmp = new PDO('mysql:host=localhost;charset=utf8', $setup_db->get_USER(), $setup_db->get_PASSWORD());
-    if ($tmp->exec("CREATE DATABASE IF NOT EXISTS camagru") === FALSE) {
+    $tmp = new PDO('mysql:host=mysql-hypertrading.alwaysdata.net;charset=utf8', $setup_db->get_USER(), $setup_db->get_PASSWORD());
+    if ($tmp->exec("CREATE DATABASE IF NOT EXISTS hypertrading_camagru") === FALSE) {
         echo "Error creation database<br>";
         exit ();
     }

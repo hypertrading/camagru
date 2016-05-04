@@ -43,7 +43,7 @@ $montage = new montage();
 
     <p>or upload directly your picture : <small>(jpeg only)</small></p>
     <div class="input-file-container">
-        <input class="input-file" type="file" name="file" id="my-file">
+        <input class="input-file" type="file" name="file" id="my-file" accept="image/jpeg">
         <label for="my-file" class="input-file-trigger" tabindex="0">Select a file...</label>
     </div>
     <p class="file-return"></p>

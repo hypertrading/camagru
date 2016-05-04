@@ -7,8 +7,11 @@ $str = "data:image/png;base64,";
 $data = str_replace($str, "", $_POST['pict']);
 if(base64_decode($data, true) == FALSE)
 {
-    $image = imagecreatefromjpeg($data);
-    exit (); // Todo Fix Fakepath !
+    $data = $_FILES['file']['tmp_name'];
+    $sizetmp = getimagesize($_FILES['file']['tmp_name']);
+    $tmp_image = imagecreatefromjpeg($data);
+    $image = imagecreatetruecolor(320, 240);
+    imagecopyresampled($image, $tmp_image, 0, 0, 0, 0, 320, 240, $sizetmp[0], $sizetmp[1]);
 }
 else
 {
